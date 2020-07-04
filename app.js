@@ -19,9 +19,6 @@ mongoose
     console.error("Error connecting to mongo", err);
   });
 
-const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
-
 const app = express();
 
 app.use(
@@ -37,7 +34,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
+const usersRouter = require("./routes/users");
 app.use("/users", usersRouter);
 
 module.exports = app;
