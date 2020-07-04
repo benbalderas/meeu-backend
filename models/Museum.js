@@ -35,6 +35,10 @@ const museumSchema = new Schema(
       ],
       default: "Encyclopedic",
     },
+    exhibits: {
+      type: [Schema.Types.ObjectId],
+      ref: "Exhibit",
+    },
   },
   { timestamps: true }
 );

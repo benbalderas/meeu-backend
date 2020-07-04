@@ -14,7 +14,7 @@ const artworkSchema = new Schema(
       type: String,
     },
     year: {
-      type: Date,
+      type: String,
       required: [true, "An artwork must have a year"],
     },
     medium: {
@@ -22,7 +22,7 @@ const artworkSchema = new Schema(
     },
     description: {
       type: String,
-      max: [500, "You must not exceen 500 characters"],
+      max: [700, "You must not exceed 500 characters"],
     },
   },
   { timestamps: true }

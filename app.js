@@ -36,8 +36,10 @@ app.use(express.static(path.join(__dirname, "public")));
 
 const usersRouter = require("./routes/users");
 const artworksRouter = require("./routes/artworks");
+const exhibitsRouter = require("./routes/exhibits");
 
 app.use("/users", usersRouter);
 app.use("/artworks", artworksRouter);
+app.use("/exhibits", exhibitsRouter);
 
 module.exports = app;
