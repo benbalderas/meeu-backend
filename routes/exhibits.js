@@ -16,7 +16,7 @@ router.get("/:id", (req, res) => {
   const { id } = req.params;
 
   Exhibit.findById(id)
-    .populate("artwork", "title author")
+    .populate("artworks", "image title author")
     .then((result) => {
       res.status(200).json({ result });
     })
