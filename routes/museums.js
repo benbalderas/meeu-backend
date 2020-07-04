@@ -26,7 +26,6 @@ router.get("/:id", (req, res) => {
 
 // Create a museum
 router.post("/", uploader.single("image"), (req, res) => {
-  // Upload single image, for multiple images use Uploader.array and map the file paths to an "images" array
   const image = req.file.path;
   const museum = { ...req.body, image };
 
