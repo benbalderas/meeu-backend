@@ -35,6 +35,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 const usersRouter = require("./routes/users");
+const artworksRouter = require("./routes/artworks");
+
 app.use("/users", usersRouter);
+app.use("/artworks", artworksRouter);
 
 module.exports = app;
