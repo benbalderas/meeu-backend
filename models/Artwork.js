@@ -1,30 +1,31 @@
-const { Schema, model, Mongoose } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
-const userSchema = new Schema(
+const artworkSchema = new Schema(
   {
-    name: {
+    image: {
+      type: String,
+      required: [true, "An artwork must have an image"],
+    },
+    title: {
+      type: String,
+      required: [true, "An artwork must have a title"],
+    },
+    author: {
       type: String,
     },
-    email: {
-      type: String,
-      required: [true, "You must add an email"],
-      validate: {
-        message: "Email already has an account",
-        validator: async (email) => {
-          const items = await mongoose.models["User"].count({ email });
-          return items < 1;
-        },
-      },
+    year: {
+      type: Date,
+      required: [true, "An artwork must have a year"],
     },
-    password: {
+    medium: {
       type: String,
-      required: [true, "You must add a password"],
     },
-    avatar: {
+    description: {
       type: String,
+      max: [500, "You must not exceen 500 characters"],
     },
   },
   { timestamps: true }
 );
 
-module.exports = model("User", userSchema);
+module.exports = model("Artwork", artworkSchema);
