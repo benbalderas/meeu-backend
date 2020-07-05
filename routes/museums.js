@@ -2,6 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const uploader = require("../helpers/multer");
 const Museum = require("../models/Museum");
+const { veryToken } = require("../helpers/auth");
 
 // Get all museums
 router.get("/", (req, res) => {
@@ -25,7 +26,7 @@ router.get("/:id", (req, res) => {
 });
 
 // Create a museum
-router.post("/", uploader.single("image"), (req, res) => {
+router.post("/", veryToken, uploader.single("image"), (req, res) => {
   const image = req.file.path;
   const museum = { ...req.body, image };
 
