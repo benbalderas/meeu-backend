@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const router = Router();
+const { veryToken } = require("../helpers/auth");
 const Exhibit = require("../models/Exhibit");
 
 // Get all exhibits
@@ -24,7 +25,7 @@ router.get("/:id", (req, res) => {
 });
 
 // Create an exhibit
-router.post("/", (req, res) => {
+router.post("/", veryToken, (req, res) => {
   const exhibit = { ...req.body };
 
   Exhibit.create(exhibit)
