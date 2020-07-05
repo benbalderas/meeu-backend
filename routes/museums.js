@@ -28,7 +28,8 @@ router.get("/:id", (req, res) => {
 // Create a museum
 router.post("/", veryToken, uploader.single("image"), (req, res) => {
   const image = req.file.path;
-  const museum = { ...req.body, image };
+  const museum = { ...req.body, admin, image };
+  const { _id: admin } = req.user;
 
   Museum.create(museum)
     .then((result) => {
