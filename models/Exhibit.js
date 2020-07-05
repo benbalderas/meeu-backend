@@ -8,7 +8,7 @@ const exhibitSchema = new Schema({
   description: {
     type: String,
     required: [true, "An exhibit must have a description"],
-    max: [150, "You should not exceed 150 characters"],
+    max: [150, "You should not exceed 550 characters"],
   },
   type: {
     type: String,
@@ -17,10 +17,7 @@ const exhibitSchema = new Schema({
   endDate: {
     type: Date,
   },
-  artworks: {
-    type: [Schema.Types.ObjectId],
-    ref: "Artwork"
-  },
+  artworks: [{ type: Schema.Types.ObjectId, ref: "Artwork" }],
 });
 
 module.exports = model("Exhibit", exhibitSchema);

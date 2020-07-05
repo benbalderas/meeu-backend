@@ -19,9 +19,6 @@ mongoose
     console.error("Error connecting to mongo", err);
   });
 
-const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
-
 const app = express();
 
 app.use(
@@ -37,7 +34,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
+const usersRouter = require("./routes/users");
+const artworksRouter = require("./routes/artworks");
+const exhibitsRouter = require("./routes/exhibits");
+const museumsRouter = require("./routes/museums");
+
+app.use("/", usersRouter);
+app.use("/artworks", artworksRouter);
+app.use("/exhibits", exhibitsRouter);
+app.use("/museums", museumsRouter);
 
 module.exports = app;

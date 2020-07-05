@@ -10,9 +10,10 @@ const museumSchema = new Schema(
       type: String,
       required: [true, "A musuem must have a name"],
     },
-    country: {
+    countryCode: {
       type: String,
       required: [true, "A museum must be located in a country"],
+      max: 2,
     },
     city: {
       type: String,
@@ -35,6 +36,7 @@ const museumSchema = new Schema(
       ],
       default: "Encyclopedic",
     },
+    exhibits: [{ type: Schema.Types.ObjectId, ref: "Exhibit" }],
   },
   { timestamps: true }
 );
