@@ -25,12 +25,12 @@ router.get("/:id", (req, res) => {
     .catch((err) => res.status(400).json(err));
 });
 
-// Get ADMIN single museum
+// Get ADMIN single museum -- might delete later
 router.get("/:id", veryToken, (req, res) => {
   const { _id: admin } = req.user;
   const { id } = req.params;
 
-  Museum.findOne({ id, admin })
+  Museum.findOne({ _id: id, admin })
     .then((result) => {
       res.status(200).json({ result });
     })
