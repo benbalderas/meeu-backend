@@ -1,5 +1,21 @@
-const jwt = require("jsonwebtoken");
-const User = require("../models/User");
+const jwt = require('jsonwebtoken');
+const User = require('../models/User');
+
+exports.hasPermissions = (roles) => {
+  return (req, res, next) => {
+    const { role } = req.user;
+    const isAuth = roles.includes(role);
+    if (isAuth) {
+      next();
+    } else {
+      return res
+        .status(403)
+        .json({
+          message: "You don't have permissions to perfor this operation",
+        });
+    }
+  };
+};
 
 exports.veryToken = (req, res, next) => {
   const { token } = req.cookies;
