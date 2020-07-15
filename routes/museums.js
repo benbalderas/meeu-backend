@@ -6,7 +6,9 @@ const Museum = require("../models/Museum");
 
 // Get all museums
 router.get("/", (req, res) => {
-  Museum.find()
+  const filter = req.query;
+
+  Museum.find(filter)
     .then((result) => {
       res.status(200).json({ result });
     })

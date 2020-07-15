@@ -28,7 +28,6 @@ const userSchema = new Schema(
       enum: ["Admin", "Visitor"],
       default: "Visitor",
     },
-    museum: { type: Schema.Types.ObjectId, ref: "Museum" },
   },
   { timestamps: true }
 );

@@ -17,9 +17,7 @@ const exhibitSchema = new Schema({
   endDate: {
     type: Date,
   },
-  // esto ya no es necesario
-  artworks: [{ type: Schema.Types.ObjectId, ref: "Artwork" }],
-  // agreagar objectid de museo
+  museum: { type: Schema.Types.ObjectId, ref: "Museum" },
 });
 
 module.exports = model("Exhibit", exhibitSchema);

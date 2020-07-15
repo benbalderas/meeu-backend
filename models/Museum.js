@@ -36,7 +36,6 @@ const museumSchema = new Schema(
       ],
       default: "Encyclopedic",
     },
-    exhibits: [{ type: Schema.Types.ObjectId, ref: "Exhibit" }],
     admin: { type: Schema.Types.ObjectId, ref: "User" },
   },
   { timestamps: true }

@@ -5,8 +5,8 @@ const Exhibit = require('../models/Exhibit');
 
 // Get all exhibits
 router.get('/', (req, res) => {
-  console.log(req.query);
   const filter = req.query;
+  
   Exhibit.find(filter)
     .then((result) => {
       res.status(200).json({ result });
