@@ -24,6 +24,7 @@ const artworkSchema = new Schema(
       type: String,
       max: [700, "You must not exceed 500 characters"],
     },
+    // agregar id de exhibicion
   },
   { timestamps: true }
 );
