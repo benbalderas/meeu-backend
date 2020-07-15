@@ -6,7 +6,7 @@ const Exhibit = require('../models/Exhibit');
 // Get all exhibits
 router.get('/', (req, res) => {
   const filter = req.query;
-  
+
   Exhibit.find(filter)
     .then((result) => {
       res.status(200).json({ result });
@@ -27,7 +27,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Create an exhibit
-router.post('/create', veryToken, (req, res) => {
+router.post('/', veryToken, (req, res) => {
   const exhibit = { ...req.body };
 
   Exhibit.create(exhibit)

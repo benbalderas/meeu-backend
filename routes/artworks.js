@@ -28,7 +28,6 @@ router.get('/:id', (req, res) => {
 // Create an arwork
 router.post('/', veryToken, uploader.single('image'), (req, res) => {
   // Upload single image, for multiple images use Uploader.array and map the file paths to an "images" array
-  console.log(req.file);
   const image = req.file.path;
   const artwork = { ...req.body, image };
 

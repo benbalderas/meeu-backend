@@ -8,11 +8,12 @@ const exhibitSchema = new Schema({
   description: {
     type: String,
     required: [true, "An exhibit must have a description"],
-    max: [150, "You should not exceed 550 characters"],
+    max: [550, "You should not exceed 550 characters"],
   },
   type: {
     type: String,
     enum: ["Permanent", "Temporary"],
+    required: [true, "An exhibit must have a title"],
   },
   endDate: {
     type: Date,
