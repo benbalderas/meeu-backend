@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bed24992.chunk.css",
+    "main.js": "/static/js/main.550ca92b.chunk.js",
+    "main.js.map": "/static/js/main.550ca92b.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.df3a54bb.js",
+    "runtime-main.js.map": "/static/js/runtime-main.df3a54bb.js.map",
+    "static/js/2.e277741c.chunk.js": "/static/js/2.e277741c.chunk.js",
+    "static/js/2.e277741c.chunk.js.map": "/static/js/2.e277741c.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.514816c7176d05236d05c1cafec7cc75.js": "/precache-manifest.514816c7176d05236d05c1cafec7cc75.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.bed24992.chunk.css.map": "/static/css/main.bed24992.chunk.css.map",
+    "static/js/2.e277741c.chunk.js.LICENSE.txt": "/static/js/2.e277741c.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/Vulf_Mono-Italic_web.e9ac7880.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.df3a54bb.js",
+    "static/js/2.e277741c.chunk.js",
+    "static/css/main.bed24992.chunk.css",
+    "static/js/main.550ca92b.chunk.js"
+  ]
+}
