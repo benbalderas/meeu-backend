@@ -5,8 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
-    "prebuild": "cd ../meeu-frontend && yarn build",
-    "build": "cp -r ../meeu-frontend/build/ public/"
+    "predeploy": "cd ../meeu-frontend && yarn build",
+    "deploy": "cp -r ../meeu-frontend/build/ public/"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
