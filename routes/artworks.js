@@ -4,10 +4,11 @@ const uploader = require('../helpers/multer');
 const { veryToken } = require('../helpers/auth');
 const Artwork = require('../models/Artwork');
 
-// Get all artworks
-// TODO: Get artworks only from a certain exhibit
+
 router.get('/', (req, res) => {
-  Artwork.find()
+  const filter = req.query;
+
+  Artwork.find(filter)
     .then((result) => {
       res.status(200).json({ result });
     })
