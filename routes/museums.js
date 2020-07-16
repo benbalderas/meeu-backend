@@ -43,7 +43,7 @@ router.get("/:id", veryToken, (req, res) => {
 router.post(
   "/",
   veryToken,
-  hasPermissions(["admin"]),
+  hasPermissions(["Admin"]),
   uploader.single("image"),
   (req, res) => {
     const image = req.file.path;

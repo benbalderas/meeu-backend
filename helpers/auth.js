@@ -11,7 +11,7 @@ exports.hasPermissions = (roles) => {
       return res
         .status(403)
         .json({
-          message: "You don't have permissions to perfor this operation",
+          message: "You don't have permissions to perform this operation",
         });
     }
   };

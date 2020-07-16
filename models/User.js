@@ -28,6 +28,10 @@ const userSchema = new Schema(
       enum: ["Admin", "Visitor"],
       default: "Visitor",
     },
+    museum: {
+      type: String,
+      unique: true,
+    }
   },
   { timestamps: true }
 );
