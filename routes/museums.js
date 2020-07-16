@@ -20,7 +20,6 @@ router.get("/:id", (req, res) => {
   const { id } = req.params;
 
   Museum.findById(id)
-    .populate("exhibits", "title type")
     .then((result) => {
       res.status(200).json({ result });
     })
