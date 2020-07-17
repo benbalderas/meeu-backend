@@ -23,7 +23,11 @@ const app = express();
 
 app.use(
   cors({
-    origin: ['http://localhost:3001', 'https://www.meeu.app'],
+    origin: [
+      'http://localhost:3001',
+      'https://www.meeu.app',
+      'https://meeu.herokuapp.com/',
+    ],
     credentials: true,
   })
 );

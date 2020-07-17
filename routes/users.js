@@ -14,6 +14,7 @@ router.post("/signup", (req, res) => {
     User.create(user)
       .then(() => {
         res.status(200).json({ msg: "Successfully created user" });
+        // Login process
       })
       .catch((err) => res.status(400).json(err));
   });
