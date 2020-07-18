@@ -22,7 +22,7 @@ const artworkSchema = new Schema(
     },
     description: {
       type: String,
-      max: [700, "You must not exceed 500 characters"],
+      max: [1000, "You must not exceed 1000 characters"],
     },
     exhibit: { type: Schema.Types.ObjectId, ref: "Exhibit" },
   },
