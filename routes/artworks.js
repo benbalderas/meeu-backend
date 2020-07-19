@@ -39,4 +39,17 @@ router.post('/', veryToken, uploader.single('image'), (req, res) => {
     .catch((err) => res.status(400).json(err));
 });
 
+// Delete artwork
+router.delete("/:id", veryToken, (req, res) => {
+  const { id } = req.params;
+
+  Artwork.findByIdAndRemove(id)
+    .then((artwork) => {
+      res.status(200).json({
+        result: artwork,
+      });
+    })
+    .catch((err) => res.status(400).json(err));
+});
+
 module.exports = router;

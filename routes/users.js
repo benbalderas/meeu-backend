@@ -1,11 +1,12 @@
-const { Router } = require("express");
+const { Router } = require('express');
 const router = Router();
-const User = require("../models/User");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const uploader = require('../helpers/multer');
+const User = require('../models/User');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 // Create user
-router.post("/signup", (req, res) => {
+router.post('/signup', (req, res) => {
   const { password, ...userValues } = req.body;
 
   bcrypt.hash(password, 10).then((hashedPass) => {
@@ -13,7 +14,7 @@ router.post("/signup", (req, res) => {
 
     User.create(user)
       .then(() => {
-        res.status(200).json({ msg: "Successfully created user" });
+        res.status(200).json({ msg: 'Successfully created user' });
         // Login process
       })
       .catch((err) => res.status(400).json(err));
@@ -21,27 +22,27 @@ router.post("/signup", (req, res) => {
 });
 
 // Ger user for login
-router.post("/login", (req, res) => {
+router.post('/login', (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password)
-    return res.status(400).json({ msg: "Email or password not sent" });
+    return res.status(400).json({ msg: 'Email or password not sent' });
 
   User.findOne({ email }).then((user) => {
     if (user === null)
       return res
         .status(404)
-        .json({ msg: "Email not associated with an account" });
+        .json({ msg: 'Email not associated with an account' });
 
     bcrypt.compare(password, user.password).then((match) => {
       if (match) {
         const userObject = user.toObject(); // Convert bson to json
         const { password, ...userWithoutPass } = userObject; // Take out password from object
         const token = jwt.sign({ id: user._id }, process.env.SECRET, {
-          expiresIn: "1d",
+          expiresIn: '1d',
         });
         res
-          .cookie("token", token, {
+          .cookie('token', token, {
             expires: new Date(Date.now() + 86400000),
             secure: false, // TODO: Change to try if there is SSL
             httpOnly: true,
@@ -49,14 +50,29 @@ router.post("/login", (req, res) => {
           .json({ user: userWithoutPass });
       }
 
-      return res.status(400).json({ msg: "Incorrect password" });
+      return res.status(400).json({ msg: 'Incorrect password' });
     });
   });
 });
 
 // Logout
-router.post("/logout", (req, res) => {
-  res.clearCookie("token").json({ msg: "Logged out" });
+router.post('/logout', (req, res) => {
+  res.clearCookie('token').json({ msg: 'Logged out' });
+});
+
+// Update
+router.post('/:id', uploader.single('image'), (req, res) => {
+  const { id } = req.params;
+  const image = req.file.path;
+  const user = { ...req.body, image };
+
+  User.findByIdAndUpdate(id, user, { new: true })
+    .then((user) => {
+      res.status(200).json({
+        result: user,
+      });
+    })
+    .catch((err) => res.status(400).json(err));
 });
 
 module.exports = router;
