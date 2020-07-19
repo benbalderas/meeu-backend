@@ -36,4 +36,17 @@ router.post('/', veryToken, (req, res) => {
     .catch((err) => res.status(400).json(err));
 });
 
+// Delete exhibit
+router.delete("/:id", veryToken, (req, res) => {
+  const { id } = req.params;
+
+  Exhibit.findByIdAndRemove(id)
+    .then((exhibit) => {
+      res.status(200).json({
+        result: exhibit,
+      });
+    })
+    .catch((err) => res.status(400).json(err));
+});
+
 module.exports = router;
