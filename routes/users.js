@@ -63,8 +63,8 @@ router.post('/logout', (req, res) => {
 // Update
 router.post('/:id', uploader.single('avatar'), (req, res) => {
   const { id } = req.params;
-  const avatar = req.file.path;
-  const user = { ...req.body, avatar };
+  const avatar = req.file ? req.file.path : null;
+  const user = avatar ? { ...req.body, avatar } : { ...req.body };
 
   User.findByIdAndUpdate(id, user, { new: true })
     .then((user) => {
