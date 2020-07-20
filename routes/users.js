@@ -61,10 +61,10 @@ router.post('/logout', (req, res) => {
 });
 
 // Update
-router.post('/:id', uploader.single('image'), (req, res) => {
+router.post('/:id', uploader.single('avatar'), (req, res) => {
   const { id } = req.params;
-  const image = req.file.path;
-  const user = { ...req.body, image };
+  const avatar = req.file.path;
+  const user = { ...req.body, avatar };
 
   User.findByIdAndUpdate(id, user, { new: true })
     .then((user) => {
