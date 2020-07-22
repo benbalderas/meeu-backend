@@ -38,7 +38,7 @@ router.post('/create', veryToken, uploader.single('image'), (req, res) => {
 });
 
 // Delete artwork
-router.delete('/:id', veryToken, (req, res) => {
+router.delete('delete/:id', veryToken, (req, res) => {
   const { id } = req.params;
 
   Artwork.findByIdAndRemove(id)
