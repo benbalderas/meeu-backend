@@ -4,7 +4,6 @@ const uploader = require('../helpers/multer');
 const { veryToken } = require('../helpers/auth');
 const Artwork = require('../models/Artwork');
 
-
 router.get('/', (req, res) => {
   const filter = req.query;
 
@@ -27,8 +26,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Create an arwork
-router.post('/', veryToken, uploader.single('image'), (req, res) => {
-  // Upload single image, for multiple images use Uploader.array and map the file paths to an "images" array
+router.post('/create', veryToken, uploader.single('image'), (req, res) => {
   const image = req.file.path;
   const artwork = { ...req.body, image };
 
@@ -40,7 +38,7 @@ router.post('/', veryToken, uploader.single('image'), (req, res) => {
 });
 
 // Delete artwork
-router.delete("/:id", veryToken, (req, res) => {
+router.delete('/:id', veryToken, (req, res) => {
   const { id } = req.params;
 
   Artwork.findByIdAndRemove(id)

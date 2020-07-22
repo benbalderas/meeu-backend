@@ -26,7 +26,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Create an exhibit
-router.post('/', veryToken, (req, res) => {
+router.post('/create', veryToken, (req, res) => {
   const exhibit = { ...req.body };
 
   Exhibit.create(exhibit)
@@ -37,7 +37,7 @@ router.post('/', veryToken, (req, res) => {
 });
 
 // Delete exhibit
-router.delete("/:id", veryToken, (req, res) => {
+router.delete('/:id', veryToken, (req, res) => {
   const { id } = req.params;
 
   Exhibit.findByIdAndRemove(id)
