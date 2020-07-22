@@ -38,7 +38,7 @@ router.post('/create', veryToken, (req, res) => {
 });
 
 // Delete exhibit
-router.delete('delete/:id', veryToken, (req, res) => {
+router.delete('/:id', veryToken, (req, res) => {
   const { id } = req.params;
 
   Exhibit.findByIdAndRemove(id)
