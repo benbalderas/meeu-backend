@@ -2,6 +2,7 @@ const { Router } = require('express');
 const router = Router();
 const { veryToken } = require('../helpers/auth');
 const Exhibit = require('../models/Exhibit');
+const Artworks = require('../models/Artwork');
 
 // Get all exhibits
 router.get('/', (req, res) => {
@@ -37,7 +38,7 @@ router.post('/create', veryToken, (req, res) => {
 });
 
 // Delete exhibit
-router.delete('/:id', veryToken, (req, res) => {
+router.delete('delete/:id', veryToken, (req, res) => {
   const { id } = req.params;
 
   Exhibit.findByIdAndRemove(id)
@@ -45,6 +46,14 @@ router.delete('/:id', veryToken, (req, res) => {
       res.status(200).json({
         result: exhibit,
       });
+
+      Artworks.deleteMany({ exhibit: { $eq: id } })
+        .then((artworks) => {
+          res.status(200).json({
+            result: artworks,
+          });
+        })
+        .catch((err) => res.status(400).json(err));
     })
     .catch((err) => res.status(400).json(err));
 });
