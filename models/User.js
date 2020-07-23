@@ -30,7 +30,6 @@ const userSchema = new Schema(
     },
     museum: {
       type: String,
-      unique: true,
     }
   },
   { timestamps: true }

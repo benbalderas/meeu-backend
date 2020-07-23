@@ -26,7 +26,7 @@ router.get("/:id", (req, res) => {
     .catch((err) => res.status(400).json(err));
 });
 
-// Get ADMIN single museum -- might delete later
+// Get ADMIN single museum
 router.get("/:id", veryToken, (req, res) => {
   const { _id: admin } = req.user;
   const { id } = req.params;
