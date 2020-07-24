@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 // Create user
-router.post('/signup', (req, res) => {
+router.post('/create', (req, res) => {
   const { password, ...userValues } = req.body;
 
   bcrypt.hash(password, 10).then((hashedPass) => {
