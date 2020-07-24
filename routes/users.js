@@ -5,21 +5,6 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-// Create user
-router.post('/signup', (req, res) => {
-  const { password, ...userValues } = req.body;
-
-  bcrypt.hash(password, 10).then((hashedPass) => {
-    const user = { ...userValues, password: hashedPass };
-
-    User.create(user)
-      .then(() => {
-        res.status(200).json({ msg: 'Successfully created user' });
-      })
-      .catch((err) => res.status(400).json(err));
-  });
-});
-
 // Ger user for login
 router.post('/login', (req, res) => {
   const { email, password } = req.body;
@@ -72,6 +57,21 @@ router.post('/:id', uploader.single('avatar'), (req, res) => {
       });
     })
     .catch((err) => res.status(400).json(err));
+});
+
+// Create user
+router.post('/signup', (req, res) => {
+  const { password, ...userValues } = req.body;
+
+  bcrypt.hash(password, 10).then((hashedPass) => {
+    const user = { ...userValues, password: hashedPass };
+
+    User.create(user)
+      .then(() => {
+        res.status(200).json({ msg: 'Successfully created user' });
+      })
+      .catch((err) => res.status(400).json(err));
+  });
 });
 
 module.exports = router;
