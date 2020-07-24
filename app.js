@@ -39,7 +39,7 @@ const artworksRouter = require('./routes/artworks');
 const exhibitsRouter = require('./routes/exhibits');
 const museumsRouter = require('./routes/museums');
 
-app.use('/api/', usersRouter);
+app.use('/api/users', usersRouter);
 app.use('/api/artworks', artworksRouter);
 app.use('/api/exhibits', exhibitsRouter);
 app.use('/api/museums', museumsRouter);
