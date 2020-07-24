@@ -8,13 +8,6 @@ const userSchema = new Schema(
     email: {
       type: String,
       required: [true, "You must add an email"],
-      validate: {
-        message: "Email already has an account",
-        validator: async (email) => {
-          const items = await models["User"].count({ email });
-          return items < 1;
-        },
-      },
     },
     password: {
       type: String,
